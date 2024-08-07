@@ -32,7 +32,6 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick', '~> 4.12'
 
 gem 'activeadmin'
-gem 'sassc-rails', '~> 2.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -50,6 +49,8 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 gem "bootsnap", require: false
 
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
+gem 'sassc-rails', '>= 2.1.0'
+
 
 gem 'kaminari'
 
