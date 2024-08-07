@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Your Shopping Cart</h1>
+
+  <% if @cart.line_items.any? %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.line_items.each do |line_item| %>
+            <tr>
+              <td><%= line_item.product.name %></td>
+              <td>
+                <%= form_with(model: line_item, local: true, class: 'form-inline') do |f| %>
+                  <%= f.number_field :quantity, min: 1, class: 'form-control form-control-sm' %>
+                  <%= f.submit "Update", class: 'btn btn-sm btn-primary ml-2' %>
+                <% end %>
+              </td>
+              <td><%= number_to_currency(line_item.product.price) %></td>
+              <td><%= number_to_currency(line_item.total_price) %></td>
+              <td>
+                <%= button_to 'Remove', line_item, method: :delete, class: 'btn btn-sm btn-danger' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-between mt-3">
+      <h2>Total Price: <%= number_to_currency(@cart.total_price) %></h2>
+      <%= button_to 'Empty Cart', @cart, method: :delete, class: 'btn btn-danger' %>
+        <% if user_signed_in? %>
+            <%= link_to "Proceed to Checkout", new_order_path, class: 'btn btn-success btn-lg' %>
+          <% else %>
+            <%= link_to "Proceed to Checkout", new_user_session_path, class: 'btn btn-success btn-lg' %>
+        <% end %>
+    </div>
+  <% else %>
+    <p>Your cart is empty</p>
+    <%= link_to 'Continue Shopping', products_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>

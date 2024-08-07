@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="my-4">Product Categories</h1>
+
+  <div class="card shadow">
+    <div class="card-body">
+      <ul class="list-group">
+        <% @categories.each do |category| %>
+          <li class="list-group-item">
+            <%= link_to category.name, category_path(category) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

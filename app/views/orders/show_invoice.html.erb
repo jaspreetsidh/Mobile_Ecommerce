@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <h1>Invoice</h1>
+  <p>Customer: <%= @customer.name %></p>
+  <p>Address: <%= @customer.address %></p>
+
+  <h2>Order Details</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.line_items.each do |line_item| %>
+        <tr>
+          <td><%= line_item.product.name %></td>
+          <td><%= line_item.quantity %></td>
+          <td><%= number_to_currency(line_item.price) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h3>Total Amount: <%= number_to_currency(@order.total_amount) %></h3>
+  <h3>GST: <%= number_to_currency(@taxes[:gst]) %></h3>
+  <h3>PST: <%= number_to_currency(@taxes[:pst]) %></h3>
+  <h3>HST: <%= number_to_currency(@taxes[:hst]) %></h3>
+  <h3>Grand Total: <%= number_to_currency(@order.total_amount + @taxes.values.sum) %></h3>
+</div>

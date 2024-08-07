@@ -1,0 +1,17 @@
+<h1>Update Address</h1>
+
+<%= form_for @customer, url: update_address_customer_path(@customer), method: :patch do |f| %>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :province %>
+    <%= f.text_field :province %>
+  </div>
+
+  <div>
+    <%= f.submit 'Update Address' %>
+  </div>
+<% end %>

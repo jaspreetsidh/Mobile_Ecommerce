@@ -1,0 +1,29 @@
+<div class="container">
+  <h1 class="my-4">My Orders</h1>
+
+  <% @orders_with_taxes.each do |order_with_taxes| %>
+    <% order = order_with_taxes[:order] %>
+    <% taxes = order_with_taxes[:taxes] %>
+
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 class="h5">Order <%= order.id %></h2>
+      </div>
+      <div class="card-body">
+        <p><strong>Total Amount:</strong> <%= number_to_currency(order.total_amount) %></p>
+        <p><strong>Taxes:</strong>
+          <% if taxes %>
+            <ul class="list-unstyled">
+              <li><strong>GST:</strong> <%= number_to_currency(taxes[:gst]) %></li>
+              <li><strong>PST:</strong> <%= number_to_currency(taxes[:pst]) %></li>
+              <li><strong>HST:</strong> <%= number_to_currency(taxes[:hst]) %></li>
+            </ul>
+          <% else %>
+            Not available
+          <% end %>
+        </p>
+        <p><strong>Grand Total:</strong> <%= number_to_currency(order.total_amount + taxes.values.sum) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="my-4">Product Details</h1>
+
+  <div class="card shadow">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <!-- Display the product image if it exists, otherwise show a placeholder -->
+        <% if @product.image.attached? %>
+          <%= image_tag url_for(@product.image), class: "card-img", alt: @product.name %>
+        <% else %>
+          <%= image_tag 'https://via.placeholder.com/300x300', class: "card-img", alt: "Placeholder image" %>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title"><%= @product.name %></h2>
+          <p class="card-text"><strong>Description:</strong> <%= @product.description %></p>
+          <p class="card-text"><strong>Price:</strong> <%= number_to_currency(@product.price) %></p>
+
+          <%= form_with url: line_items_path, method: :post, class: 'd-inline' do %>
+            <%= hidden_field_tag :product_id, @product.id %>
+            <%= submit_tag 'Add to Cart', class: 'btn btn-success mt-3' %>
+          <% end %>
+
+          <%= link_to 'Back to Product List', products_path, class: 'btn btn-primary mt-3 ml-2' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

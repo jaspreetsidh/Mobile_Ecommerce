@@ -1,0 +1,12 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h2 class="my-4"><%= @static_page.title %></h2>
+    </div>
+    <div class="card-body">
+      <div class="content">
+        <%= @static_page.content.html_safe %>
+      </div>
+    </div>
+  </div>
+</div>

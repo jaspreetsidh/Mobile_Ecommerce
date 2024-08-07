@@ -1,0 +1,7 @@
+<h1>Order Successful!</h1>
+<p>Thank you for your order.</p>
+<% if @order %>
+  <p>Your order ID is <%= @order.id %>.</p>
+<% else %>
+  <p>Order details are not available.</p>
+<% end %>
