@@ -33,6 +33,9 @@ gem 'mini_magick', '~> 4.12'
 
 gem 'activeadmin'
 
+gem 'webpacker'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
