@@ -1,5 +1,10 @@
 require 'faker'
 
+# Ensure categories exist
+mobiles_category = Category.find_or_create_by(name: 'Mobiles')
+accessories_category = Category.find_or_create_by(name: 'Accessories')
+audio_category = Category.find_or_create_by(name: 'Audio')
+powerbank_category = Category.find_or_create_by(name: 'Powerbank')
 
 # Seed products for Mobiles category
 30.times do
