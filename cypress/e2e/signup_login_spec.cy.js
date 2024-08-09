@@ -11,8 +11,7 @@ describe('Sign-Up/Login Tests', () => {
 
     cy.url().should('include', '/products');
   });
-
-  it('should successfully log in an existing user', () => {
+   successfully log in an existing user', () => {
     cy.visit('/users/sign_in');
     cy.get('input[name="user[email]"]').type('newuser3@example.com');
     cy.get('input[name="user[password]"]').type('password123');

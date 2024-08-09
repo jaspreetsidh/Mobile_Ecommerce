@@ -19,9 +19,7 @@ ActiveAdmin.register Product do
       row :price
       row :category
       row :image do |product|
-        if product.image.attached?
-          image_tag url_for(product.image), size: '200x200'
-        end
+        image_tag url_for(product.image), size: '200x200' if product.image.attached?
       end
     end
     active_admin_comments
